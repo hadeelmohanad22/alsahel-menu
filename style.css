@@ -27,14 +27,16 @@ body {
     color: var(--white);
 }
 
+
 .logo {
-    width: 125px;
-    height: 125px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
     border-radius: 50%;
     background: var(--white);
     padding: 5px;
 }
+
 
 .hero h1 {
     color: var(--gold-light);
