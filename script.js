@@ -28,14 +28,15 @@ downloadButton.addEventListener("click", async function () {
 
         
     // وضع نسخة التصدير في الصفحة دون إخفائها خارج الشاشة
-    pdfContainer.style.position = "fixed";
+   pdfContainer.style.position = "absolute";
 pdfContainer.style.left = "0";
 pdfContainer.style.top = "0";
-pdfContainer.style.zIndex = "9999";
+pdfContainer.style.zIndex = "1";
 pdfContainer.style.pointerEvents = "none";
 pdfContainer.style.width = "760px";
-pdfContainer.style.backgroundColor = "#FFF9EF";
-
+pdfContainer.style.backgroundColor = "#F3E7D5";
+pdfContainer.style.direction = "rtl";
+pdfContainer.style.opacity = "1";
 
         document.body.appendChild(pdfContainer);
 
