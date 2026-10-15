@@ -1,272 +1,127 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
-
 :root {
-    --brown: #493426;
-    --brown-light: #74543C;
-    --gold: #C5A05A;
-    --gold-light: #E7D5A6;
-    --olive: #69734B;
-    /*--cream: #FFF9EF;*/
-    --cream: #F3E7D5;
-    --white: #FFFFFF;
-    --text: #3E3026;
+    --brown: #543b2b;
+    --gold: #c8a45d;
+    --gold-light: #f0dfb2;
+    --olive: #777747;
+    --cream: #fffaf0;
+    --white: #ffffff;
 }
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
-    font-family: 'Cairo', Tahoma, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     background: var(--cream);
-    color: var(--text);
-    line-height: 1.9;
-}
-
-a {
-    color: inherit;
+    color: var(--brown);
+    line-height: 1.8;
 }
 
 .hero {
-    position: relative;
-    overflow: hidden;
-    padding: 55px 20px 65px;
     text-align: center;
+    padding: 35px 20px;
+    background: var(--brown);
     color: var(--white);
-    background:
-        radial-gradient(circle at top left, #786044 0, transparent 35%),
-        linear-gradient(140deg, #34241C, var(--brown) 65%, #5D4930);
-    border-bottom: 5px solid var(--gold);
-}
-
-.hero-content {
-    max-width: 850px;
-    margin: auto;
 }
 
 .logo {
-    width: 145px;
-    height: 145px;
+    width: 125px;
+    height: 125px;
     object-fit: contain;
     border-radius: 50%;
-    padding: 7px;
     background: var(--white);
-    border: 3px solid var(--gold);
-    margin-bottom: 12px;
-}
-
-.eyebrow {
-    color: var(--gold);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin: 5px 0;
+    padding: 5px;
 }
 
 .hero h1 {
-    margin: 8px 0;
-    color: #F4DDA7;
-    font-size: clamp(27px, 5vw, 43px);
-    line-height: 1.5;
-}
-
-.tagline {
-    font-size: 19px;
-    margin: 5px 0;
-}
-
-.quality {
     color: var(--gold-light);
-    margin: 4px 0 22px;
+    margin: 10px 0;
 }
 
-.menu-button {
+.hero p {
+    margin: 8px 0 20px;
+}
+
+.contact-button {
     display: inline-block;
-    padding: 10px 30px;
-    border-radius: 30px;
+    text-decoration: none;
     background: var(--gold);
     color: var(--brown);
-    text-decoration: none;
-    font-weight: 800;
-    transition: 0.2s;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: bold;
 }
 
-.menu-button:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-}
-
-#menu-document {
-    max-width: 1120px;
-    margin: auto;
-    padding: 25px 22px;
-}
-
-.shop-info {
-    background: var(--white);
-    border: 1px solid #E9DDC8;
-    border-radius: 18px;
-    padding: 22px;
+.menu-title {
     text-align: center;
-    margin-bottom: 35px;
+    color: var(--olive);
+    margin: 30px 10px 20px;
 }
 
-.shop-info h2,
-.menu-heading h2,
-.closing h2 {
-    color: var(--brown);
-    margin: 0 0 8px;
-}
-
-.shop-info > p {
-    margin: 5px auto 15px;
-    max-width: 700px;
-}
-
-.contact-info {
+.menu-grid {
     display: grid;
-    gap: 5px;
-    text-align: right;
-    max-width: 750px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    max-width: 1100px;
+    padding: 0 18px 35px;
     margin: auto;
-}
-
-.contact-info p {
-    margin: 3px 0;
-    overflow-wrap: anywhere;
-}
-
-.contact-info a {
-    color: var(--olive);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.menu-heading {
-    text-align: center;
-    margin: 35px 0 25px;
-}
-
-.menu-heading h2 {
-    font-size: 32px;
-}
-
-.menu-heading > p:last-child {
-    color: var(--olive);
-    margin-top: 0;
-}
-
-.dessert-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
 }
 
 .dessert-card {
-    overflow: hidden;
     background: var(--white);
-    border: 1px solid #E8DCC8;
-    border-radius: 17px;
-    box-shadow: 0 5px 17px rgba(73, 52, 38, 0.07);
-    break-inside: avoid;
-    page-break-inside: avoid;
+    border: 1px solid #e6d9bf;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(84, 59, 43, 0.10);
 }
 
-.dessert-image {
-    display: block;
+.dessert-card img {
     width: 100%;
-    height: 265px;
+    height: 230px;
     object-fit: cover;
-    background: #EEE5D5;
+    display: block;
 }
 
 .dessert-info {
-    padding: 17px 20px 20px;
-}
-
-.category {
-    display: inline-block;
-    background: #EDF0E4;
-    color: var(--olive);
-    padding: 3px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
+    padding: 15px;
 }
 
 .dessert-info h3 {
-    color: var(--brown);
-    font-size: 21px;
-    line-height: 1.6;
-    margin: 8px 0;
-}
-
-.dessert-info > p {
-    font-size: 14px;
-    line-height: 2;
-    margin: 5px 0 15px;
-}
-
-.prices {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 12px;
-    border-top: 1px dashed #D8C5A3;
-}
-
-.prices span {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 10px;
-    font-size: 14px;
-}
-
-.prices strong {
     color: var(--olive);
-    white-space: nowrap;
-    font-size: 15px;
+    margin: 0 0 8px;
 }
 
-.closing {
-    margin-top: 35px;
-    padding: 30px 15px;
+.dessert-info p {
+    margin: 7px 0;
+}
+
+.price {
+    color: var(--brown);
+    font-weight: bold;
+}
+
+.share-section {
     text-align: center;
-    border-radius: 18px;
-    background: #EDECDD;
-    border: 1px solid #D8D9BF;
-}
-
-.closing p {
-    margin: 5px 0;
-}
-
-.download-section {
-    text-align: center;
-    margin: 10px 20px 35px;
+    margin: 25px 20px 35px;
     padding: 25px 15px;
     border-radius: 18px;
     background: var(--brown);
     color: var(--white);
 }
 
-.download-section h2 {
+.share-section h2 {
     color: var(--gold-light);
     margin: 0;
 }
 
-.download-section p {
+.share-section p {
     margin: 8px 0 17px;
 }
 
-#downloadPDF {
+#shareMenu {
     border: none;
     border-radius: 30px;
     background: var(--gold);
@@ -274,166 +129,44 @@ a {
     padding: 13px 28px;
     font-family: inherit;
     font-size: 16px;
-    font-weight: 800;
+    font-weight: bold;
     cursor: pointer;
 }
 
-#downloadPDF:hover {
+#shareMenu:hover {
     background: var(--gold-light);
 }
 
-#downloadPDF:disabled {
-    opacity: 0.7;
-    cursor: wait;
-}
-
-#downloadStatus {
+#shareStatus {
     font-size: 13px;
 }
 
 footer {
-    background: #2F241D;
-    color: #F4E7D0;
     text-align: center;
-    padding: 18px;
-    font-size: 13px;
+    background: #e9e0cf;
+    padding: 20px 12px;
+    color: var(--brown);
 }
 
 footer p {
-    margin: 3px;
+    margin: 5px 0;
 }
 
 footer a {
-    color: var(--gold-light);
-    text-decoration: none;
+    color: var(--olive);
+    overflow-wrap: anywhere;
 }
 
-/* شكل نسخة PDF */
-
-.pdf-export {
-    width: 760px;
-    padding: 22px;
-    background: var(--cream);
-    color: var(--text);
-    font-family: Tahoma, Arial, sans-serif;
-    direction: rtl;
-}
-
-.pdf-export .hero {
-    padding: 28px 15px;
-    border-radius: 12px;
-}
-
-.pdf-export .logo {
-    width: 100px;
-    height: 100px;
-}
-
-.pdf-export .hero h1 {
-    font-size: 29px;
-}
-
-.pdf-export .tagline {
-    font-size: 16px;
-}
-
-.pdf-export #menu-document {
-    max-width: none;
-    padding: 15px 0;
-}
-
-.pdf-export .shop-info {
-    margin-bottom: 18px;
-    padding: 15px;
-}
-
-.pdf-export .menu-heading {
-    margin: 20px 0;
-}
-
-.pdf-export .menu-heading h2 {
-    font-size: 26px;
-}
-
-.pdf-export .dessert-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
-}
-
-.pdf-export .dessert-card {
-    box-shadow: none;
-    border-radius: 10px;
-}
-
-.pdf-export .dessert-image {
-    height: 180px;
-}
-
-.pdf-export .dessert-info {
-    padding: 12px;
-}
-
-.pdf-export .dessert-info h3 {
-    font-size: 17px;
-}
-
-.pdf-export .dessert-info > p {
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.pdf-export .prices span {
-    font-size: 11px;
-}
-
-.pdf-export .prices strong {
-    font-size: 12px;
-}
-
-.pdf-export .closing {
-    margin-top: 18px;
-    padding: 18px;
-}
-
-@media (max-width: 650px) {
+@media (max-width: 480px) {
     .hero {
-        padding: 35px 15px 45px;
+        padding: 25px 14px;
     }
 
-    .logo {
-        width: 120px;
-        height: 120px;
-    }
-
-    #menu-document {
-        padding: 20px 13px;
-    }
-
-    .dessert-container {
+    .menu-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
 
-    .dessert-image {
-        height: 250px;
-    }
-
-    .dessert-info {
-        padding: 15px;
-    }
-
-    .contact-info {
-        font-size: 14px;
-    }
-
-    .menu-heading h2 {
-        font-size: 27px;
-    }
-}
-
-@media print {
-    .download-section,
-    footer {
-        display: none;
+    .dessert-card img {
+        height: 240px;
     }
 }
