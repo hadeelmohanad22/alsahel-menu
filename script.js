@@ -1,112 +1,30 @@
 
-const downloadButton = document.getElementById("downloadPDF");
-const downloadStatus = document.getElementById("downloadStatus");
+const shareButton = document.getElementById("shareMenu");
+const shareStatus = document.getElementById("shareStatus");
 
-downloadButton.addEventListener("click", async function () {
+shareButton.addEventListener("click", async function () {
+    const menuLink = window.location.href;
 
-    if (typeof html2pdf === "undefined") {
-        downloadStatus.textContent =
-            "تعذّر تحميل مكتبة PDF. تأكدي من اتصال الإنترنت ثم أعيدي المحاولة.";
-        return;
-    }
-
-    downloadButton.disabled = true;
-    downloadStatus.textContent = "جاري تجهيز المنيو PDF...";
-
-    let pdfContainer = null;
+    const shareData = {
+        title: "حلويات السهل الأخضر",
+        text: "تفضلوا شوفوا منيو حلويات السهل الأخضر 🤎",
+        url: menuLink
+    };
 
     try {
-        // إنشاء نسخة خاصة بالتصدير دون تغيير شكل الموقع
-        pdfContainer = document.createElement("div");
-        pdfContainer.className = "pdf-export";
-
-        const hero = document.querySelector(".hero").cloneNode(true);
-        const menu = document.getElementById("menu-document").cloneNode(true);
-
-        pdfContainer.appendChild(hero);
-        pdfContainer.appendChild(menu);
-
-        
-    // وضع نسخة التصدير في الصفحة دون إخفائها خارج الشاشة
-   pdfContainer.style.position = "absolute";
-pdfContainer.style.left = "0";
-pdfContainer.style.top = "0";
-pdfContainer.style.zIndex = "1";
-pdfContainer.style.pointerEvents = "none";
-pdfContainer.style.width = "760px";
-pdfContainer.style.backgroundColor = "#F3E7D5";
-pdfContainer.style.direction = "rtl";
-pdfContainer.style.opacity = "1";
-
-        document.body.appendChild(pdfContainer);
-
-        // التأكد من تحميل جميع الصور قبل إنشاء الملف
-        const images = Array.from(pdfContainer.querySelectorAll("img"));
-
-        await Promise.all(images.map(async function (img) {
-            if (!img.complete) {
-                await new Promise(function (resolve) {
-                    img.addEventListener("load", resolve, { once: true });
-                    img.addEventListener("error", resolve, { once: true });
-                });
-            }
-
-            if (img.naturalWidth === 0) {
-                throw new Error("تعذّر تحميل إحدى الصور.");
-            }
-
-            if (img.decode) {
-                await img.decode();
-            }
-        }));
-
-        // إنشاء ملف PDF قابل للتنزيل
-        await html2pdf()
-            .set({
-                margin: [8, 8, 8, 8],
-
-                filename: "منيو-حلويات-السهل-الأخضر.pdf",
-
-                image: {
-                    type: "jpeg",
-                    quality: 0.95
-                },
-
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true,
-                    backgroundColor: "#FFF9EF",
-                    logging: false
-                },
-
-                jsPDF: {
-                    unit: "mm",
-                    format: "a4",
-                    orientation: "portrait"
-                },
-
-                pagebreak: {
-                    mode: ["css", "legacy"],
-                    avoid: [".dessert-card"]
-                }
-            })
-            .from(pdfContainer)
-            .save();
-
-        downloadStatus.textContent =
-            "تم تجهيز المنيو! تحققي من التنزيلات على جهازك.";
-
-    } catch (error) {
-        console.error(error);
-
-        downloadStatus.textContent =
-            "ما قدرنا ننشئ الملف. تأكدي من وجود الصور واتصال الإنترنت، ثم حاولي مرة ثانية.";
-
-    } finally {
-        if (pdfContainer) {
-            pdfContainer.remove();
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(menuLink);
+            shareStatus.textContent =
+                "تم نسخ رابط المنيو! ابعتيه لأصحابك 🤎";
+        } else {
+            window.prompt("انسخي رابط المنيو وشاركيه:", menuLink);
         }
-
-        downloadButton.disabled = false;
+    } catch (error) {
+        if (error.name !== "AbortError") {
+            shareStatus.textContent =
+                "ما زبطت المشاركة. جربي نسخ رابط الموقع من شريط العنوان.";
+        }
     }
 });
