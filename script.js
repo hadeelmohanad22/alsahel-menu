@@ -26,11 +26,15 @@ downloadButton.addEventListener("click", async function () {
         pdfContainer.appendChild(hero);
         pdfContainer.appendChild(menu);
 
-        // وضع النسخة خارج مساحة العرض
-        pdfContainer.style.position = "fixed";
-        pdfContainer.style.left = "-10000px";
-        pdfContainer.style.top = "0";
-        pdfContainer.style.zIndex = "-1";
+        
+    // وضع نسخة التصدير في الصفحة دون إخفائها خارج الشاشة
+    pdfContainer.style.position = "absolute";
+    pdfContainer.style.left = "0";
+    pdfContainer.style.top = "0";
+    pdfContainer.style.zIndex = "-1";
+    pdfContainer.style.pointerEvents = "none";
+    pdfContainer.style.width = "760px";
+
 
         document.body.appendChild(pdfContainer);
 
